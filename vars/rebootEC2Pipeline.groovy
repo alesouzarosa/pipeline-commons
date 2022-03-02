@@ -4,7 +4,7 @@ def call(body) {
 
     def pipelineParams= [
             
-            
+            schedule: "0 12,20 */1 * *",
             credentialIdAws: "AWS_JENKINS_CREDENTIALS",
             instanceId: "",
             awsRegion: "us-east-1"
