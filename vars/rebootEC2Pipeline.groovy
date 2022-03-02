@@ -4,7 +4,7 @@ def call(body) {
 
     def pipelineParams= [
             
-            patternRule: /develop|master|.*release\/.*/,
+            
             credentialIdAws: "AWS_JENKINS_CREDENTIALS",
             instanceId: "",
             awsRegion: "us-east-1"
@@ -13,7 +13,7 @@ def call(body) {
     body.delegate = pipelineParams
     body()
 
-    def patternMatch = BRANCH_NAME ==~ pipelineParams.patternRule
+    
 
     pipeline {
         agent any
