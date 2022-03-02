@@ -6,7 +6,7 @@ def call(body) {
             
             schedule: "0 12,20 */1 * *",
             credentialIdAws: "AWS_JENKINS_CREDENTIALS",
-            instanceId: "",
+            instanceId: "instanceid",
             awsRegion: "us-east-1"
     ]
     body.resolveStrategy = Closure.DELEGATE_FIRST
