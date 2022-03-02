@@ -3,8 +3,6 @@
 def call(body) {
 
     def pipelineParams= [
-            patternRule: /develop|master|.*release\/.*/,
-
             schedule: "0 0 0 0 0"   /*cron format */,
             credentialIdAws: "AWS_JENKINS_CREDENTIALS",
             instanceId: "",
