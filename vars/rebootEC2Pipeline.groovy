@@ -4,7 +4,7 @@ def call(body) {
 
     def pipelineParams= [
             
-            patternRule: /develop|master|.*release\/.*/
+            patternRule: /develop|master|.*release\/.*/,
             credentialIdAws: "AWS_JENKINS_CREDENTIALS",
             instanceId: "",
             awsRegion: "us-east-1"
