@@ -28,13 +28,13 @@ def call(body) {
         }
         stages {
             stage('credentialIn') {
-                step{
+                steps{
                     awsCliConfig(credentialIdAws, awsRegion)
                 }
             }
 
             stage('reboot') {
-                step{
+                steps{
                     awsCliReboot(pipelineParams.instanceId)
                 }
             }
