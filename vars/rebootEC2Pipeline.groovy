@@ -34,7 +34,7 @@ def call(body) {
 
             stage('reboot') {
                 steps{
-                    awsCliReboot(pipelineParams.instanceId)
+                    awsCliReboot()
                 }
             }
         }
