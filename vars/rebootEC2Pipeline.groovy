@@ -20,9 +20,7 @@ def call(body) {
         triggers {
             pollSCM(pipelineParams.schedule)
         }
-        tools {
-            jdk pipelineParams.jdkVersion
-        }
+ 
         options {
             buildDiscarder(logRotator(numToKeepStr: '1'))
             disableConcurrentBuilds()
