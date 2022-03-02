@@ -18,7 +18,7 @@ def call(body) {
     pipeline {
         agent any
         triggers {
-            pollSCM('${pipelineParams.schedule}')
+            pollSCM(pipelineParams.schedule)
         }
         tools {
             jdk pipelineParams.jdkVersion
