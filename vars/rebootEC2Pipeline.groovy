@@ -28,7 +28,7 @@ def call(body) {
         stages {
             stage('credentialIn') {
                 steps{
-                    awsCliConfig(credentialIdAws, awsRegion)
+                    awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
                 }
             }
 
