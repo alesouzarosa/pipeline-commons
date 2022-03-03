@@ -3,7 +3,10 @@
 def call(body) {
 
     def pipelineParams= [
-            objeto,             
+            objeto: """
+            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
+            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
+            """,         
             credentialIdAws: "AWS_JENKINS_CREDENTIALS"
 
     ]
