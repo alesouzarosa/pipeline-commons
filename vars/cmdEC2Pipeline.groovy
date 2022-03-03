@@ -3,7 +3,7 @@
 def call(body) {
 
     def pipelineParams= [
-            objeto:""" 1 * * * * * """,             
+            objeto:,             
             credentialIdAws: "AWS_JENKINS_CREDENTIALS"
 
     ]
