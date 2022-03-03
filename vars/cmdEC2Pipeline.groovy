@@ -23,12 +23,6 @@ def call(body) {
         }
         stages {
 
-            stage("select a job"){
-                //deve ler a tabela de jobs e retorna o trablaho que deve ser feito
-
-
-            }
-
             stage('credentialIn') {
                 steps{
                     awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
