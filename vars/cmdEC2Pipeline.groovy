@@ -18,7 +18,10 @@ def call(body) {
     pipeline {
         agent any
         triggers {
-            parameterizedCron("${pipelineParams.object}")
+            parameterizedCron("""
+            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
+            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
+            """)
         }
         options {
             buildDiscarder(logRotator(numToKeepStr: '1'))
