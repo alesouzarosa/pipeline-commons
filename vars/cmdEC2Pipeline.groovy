@@ -16,7 +16,7 @@ def call(body) {
         agent any
         triggers {
             parameterizedCron(pipelineParams.object)
- 
+        }
         options {
             buildDiscarder(logRotator(numToKeepStr: '1'))
             disableConcurrentBuilds()
