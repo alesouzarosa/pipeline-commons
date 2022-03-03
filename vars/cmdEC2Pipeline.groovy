@@ -3,17 +3,14 @@
 def call(body) {
 
     def pipelineParams= [
-            objeto:             
-            schedule: "0 12,20 */1 * *",
-            credentialIdAws: "AWS_JENKINS_CREDENTIALS",
-            instanceId: "instanceid",
-            awsRegion: "us-east-1"
+            objeto:""" 1 * * * * * """,             
+            credentialIdAws: "AWS_JENKINS_CREDENTIALS"
+
     ]
+
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = pipelineParams
-    body()
-
-    
+    body()    
 
     pipeline {
         agent any
