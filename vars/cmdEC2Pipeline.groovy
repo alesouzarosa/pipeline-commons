@@ -36,7 +36,7 @@ def call(body) {
 
             stage('credentialIn') {
                 steps{
-                    sh ' echo ${pipelineParams.objparameterizedCron}'
+                    sh " echo ${pipelineParams.objparameterizedCron}"
                     echo "${params.GREETING} ${params.PLANET}"
                     script { currentBuild.description = "${params.GREETING} ${params.PLANET}" }
                     awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
