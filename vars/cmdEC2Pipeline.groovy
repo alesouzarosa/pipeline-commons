@@ -13,7 +13,7 @@ def call(body) {
              //String """___"""  
             objetoParameterizedCron:"""
                 */2 * * * * %GREETING=Hola;PLANET=Pluto
-                */3 * * * * %PLANET=Mar
+                */4 * * * * %PLANET=Mar
             """ , 
 
 
