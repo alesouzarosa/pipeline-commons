@@ -3,6 +3,10 @@
 def call(body) {
 
     def pipelineParams= [:
+            objparameterizedCron: """*/2 * * * * %GREETING=Hola;PLANET=plutaoooo
+                */4 * * * * %PLANET=Marterrr
+                """,
+            credentialIdAws: "Aasdadasd"
     ]
 
     body.resolveStrategy = Closure.DELEGATE_FIRST
