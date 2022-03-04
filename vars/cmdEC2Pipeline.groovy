@@ -2,7 +2,12 @@
 
 def call(body) {
 
-    def pipelineParams= [:]
+    def pipelineParams= [
+            objparameterizedCron:"""
+        */2 * * * * %GREETING=Hola;PLANET=plutaoooo
+        */4 * * * * %PLANET=Marterrr
+        """
+    ]
 
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = pipelineParams
@@ -26,6 +31,7 @@ def call(body) {
 
             stage('credentialIn') {
                 steps{
+                    sh "echo ${pipelineParams.credentialIdAws}"
                     sh " echo ${pipelineParams.objparameterizedCron}"
                     echo "${params.GREETING} ${params.PLANET}"
                     script { currentBuild.description = "${params.GREETING} ${params.PLANET}" }
