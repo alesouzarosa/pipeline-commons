@@ -22,10 +22,9 @@ def call(body) {
         agent any
 
         parameters{
-                string(name: 'instaceId', defaultValue: 'i-123456789', description: 'Which planet are we on?')
-                string(name: 'awsRegion', defaultValue: 'us-east-1', description: 'Which planet are we on?')
-                string(name: 'command', defaultValue: 'Hello', description: 'How shall we greet?')   
-            }
+            string(name: 'PLANET', defaultValue: 'Earth', description: 'Which planet are we on?')
+            string(name: 'GREETING', defaultValue: 'Hello', description: 'How shall we greet?')
+        }
         triggers {
             parameterizedCron(
                 """
@@ -56,6 +55,8 @@ def call(body) {
 
             stage('credentialIn') {
                 steps{
+                    echo "${params.GREETING} ${params.PLANET}"
+                    script { currentBuild.description = "${params.GREETING} ${params.PLANET}" }
                     awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
                 }
             }
