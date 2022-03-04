@@ -28,7 +28,7 @@ def call(body) {
             }
         triggers {
             parameterizedCron(
-                ParameterizedCron:"""
+                """
                 */2 * * * * %GREETING=Hola;PLANET=Pluto
                 */4 * * * * %PLANET=Mar
                 """  )
