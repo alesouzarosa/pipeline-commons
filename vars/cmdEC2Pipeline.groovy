@@ -3,7 +3,9 @@
 def call(body) {
 
     def pipelineParams= [
-            objparameterizedCron: """*/2 * * * * %GREETING=Hola;PLANET=plutaoooo
+            objparameterizedCron:
+                """
+                */2 * * * * %GREETING=Hola;PLANET=plutaoooo
                 */4 * * * * %PLANET=Marterrr
                 """,
             credentialIdAws: "Aasdadasd"
@@ -32,9 +34,10 @@ def call(body) {
             stage('credentialIn') {
                 steps{
                     sh "echo ${pipelineParams.credentialIdAws}"
-                    sh " echo ${pipelineParams.objparameterizedCron}"
+                    //sh " echo ${pipelineParams.objparameterizedCron}"
                     echo "${params.GREETING} ${params.PLANET}"
                     script { currentBuild.description = "${params.GREETING} ${params.PLANET}" }
+                   
                     awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
                 }
             }
