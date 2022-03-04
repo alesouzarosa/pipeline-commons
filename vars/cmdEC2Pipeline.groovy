@@ -2,17 +2,7 @@
 
 def call(body) {
 
-    def pipelineParams= [
-
-
-             //String """___"""  
-
-            objparameterizedCron:"" ,
-
-            credentialIdAws: "AWS_JENKINS_CREDENTIALS"
-
-
-    ]
+    def pipelineParams= [:]
 
     body.resolveStrategy = Closure.DELEGATE_FIRST
     body.delegate = pipelineParams
