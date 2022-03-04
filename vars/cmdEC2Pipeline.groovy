@@ -20,7 +20,7 @@ def call(body) {
         triggers {
             parameterizedCron("""
             */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
-            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
+            */5 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
             """)
         }
         options {
