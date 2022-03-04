@@ -29,7 +29,7 @@ def call(body) {
     pipeline {
         agent any
 
-        parameters{pipelineParams.objetoParameters}
+        parameters{[pipelineParams.objetoParameters]}
         triggers {
             parameterizedCron(pipelineParams.objetoParameterizedCron)
         }
