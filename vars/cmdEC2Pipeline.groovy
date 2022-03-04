@@ -7,7 +7,7 @@ def call(body) {
 
              //String """___"""  
 
-            objparameterizedCron,
+            objparameterizedCron:"" ,
 
             credentialIdAws: "AWS_JENKINS_CREDENTIALS"
 
