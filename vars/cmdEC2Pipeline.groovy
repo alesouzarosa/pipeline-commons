@@ -3,11 +3,22 @@
 def call(body) {
 
     def pipelineParams= [
-            objeto: """
-            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
-            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
-            """,         
+             //objeto do tipo paramentro
+            objetoParameters:[
+                string(name: 'instaceId', defaultValue: 'i-123456789', description: 'Which planet are we on?'),
+                string(name: 'awsRegion', defaultValue: 'us-east-1', description: 'Which planet are we on?'),
+                string(name: 'command', defaultValue: 'Hello', description: 'How shall we greet?')   
+            ] , 
+
+             //String """___"""  
+            objetoParameterizedCron:"""
+                */2 * * * * %GREETING=Hola;PLANET=Pluto
+                */3 * * * * %PLANET=Mar
+            """ , 
+
+
             credentialIdAws: "AWS_JENKINS_CREDENTIALS"
+
 
     ]
 
@@ -17,12 +28,26 @@ def call(body) {
 
     pipeline {
         agent any
+
+        parameters{pipelineParams.objetoParameters}
         triggers {
-            parameterizedCron("""
-            */2 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
-            */5 * * * * %instanceId=Hola;awsRegion=us-east-1;comando=reboot
-            """)
+            parameterizedCron(pipelineParams.objetoParameterizedCron)
         }
+
+
+        // parameters{[
+        //     string(name: 'instaceId', defaultValue: 'i-123456789', description: 'Which planet are we on?'),
+        //     string(name: 'awsRegion', defaultValue: 'us-east-1', description: 'Which planet are we on?'),
+        //     string(name: 'command', defaultValue: 'Hello', description: 'How shall we greet?')   
+        // ]}
+        // triggers {
+        //     parameterizedCron("""
+        //         */2 * * * * %GREETING=Hola;PLANET=Pluto
+        //         */3 * * * * %PLANET=Mar
+        //     """)
+        // }
+
+
         options {
             buildDiscarder(logRotator(numToKeepStr: '1'))
             disableConcurrentBuilds()
