@@ -29,7 +29,11 @@ def call(body) {
     pipeline {
         agent any
 
-        parameters{[pipelineParams.objetoParameters]}
+        parameters{[
+                string(name: 'instaceId', defaultValue: 'i-123456789', description: 'Which planet are we on?'),
+                string(name: 'awsRegion', defaultValue: 'us-east-1', description: 'Which planet are we on?'),
+                string(name: 'command', defaultValue: 'Hello', description: 'How shall we greet?')   
+            ]}
         triggers {
             parameterizedCron(pipelineParams.objetoParameterizedCron)
         }
