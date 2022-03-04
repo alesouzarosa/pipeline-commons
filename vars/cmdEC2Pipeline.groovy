@@ -22,8 +22,8 @@ def call(body) {
         agent any
 
         parameters{
-                string(name: 'instaceId', defaultValue: 'i-123456789', description: 'Which planet are we on?'),
-                string(name: 'awsRegion', defaultValue: 'us-east-1', description: 'Which planet are we on?'),
+                string(name: 'instaceId', defaultValue: 'i-123456789', description: 'Which planet are we on?')
+                string(name: 'awsRegion', defaultValue: 'us-east-1', description: 'Which planet are we on?')
                 string(name: 'command', defaultValue: 'Hello', description: 'How shall we greet?')   
             }
         triggers {
