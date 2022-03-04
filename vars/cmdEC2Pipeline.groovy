@@ -2,10 +2,7 @@
 
 def call(body) {
 
-    def pipelineParams= [
-            objparameterizedCron: """*/2 * * * * %GREETING=Hola;PLANET=plutaoooo
-                */4 * * * * %PLANET=Marterrr
-                """
+    def pipelineParams= [:
     ]
 
     body.resolveStrategy = Closure.DELEGATE_FIRST
