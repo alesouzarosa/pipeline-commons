@@ -7,7 +7,10 @@ def call(body) {
 
              //String """___"""  
 
-
+            objparameterizedCron:"""
+                */2 * * * * %GREETING=Hola;PLANET=plutaoooo
+                */4 * * * * %PLANET=Marterrr
+                """ ,
 
             credentialIdAws: "AWS_JENKINS_CREDENTIALS"
 
@@ -26,11 +29,7 @@ def call(body) {
             string(name: 'GREETING', defaultValue: 'Hello', description: 'How shall we greet?')
         }
         triggers {
-            parameterizedCron(
-                """
-                */2 * * * * %GREETING=Hola;PLANET=Pluto
-                */4 * * * * %PLANET=Mar
-                """  )
+            parameterizedCron(pipelineParams.objparameterizedCron)
         }
 
 
