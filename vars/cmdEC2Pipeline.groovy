@@ -21,17 +21,17 @@ def call(body) {
     pipeline {
         agent any
 
-        parameters{[
+        parameters{
                 string(name: 'instaceId', defaultValue: 'i-123456789', description: 'Which planet are we on?'),
                 string(name: 'awsRegion', defaultValue: 'us-east-1', description: 'Which planet are we on?'),
                 string(name: 'command', defaultValue: 'Hello', description: 'How shall we greet?')   
-            ]}
+            }
         triggers {
             parameterizedCron(
-                objetoParameterizedCron:"""
+                ParameterizedCron:"""
                 */2 * * * * %GREETING=Hola;PLANET=Pluto
                 */4 * * * * %PLANET=Mar
-                """ , )
+                """  )
         }
 
 
