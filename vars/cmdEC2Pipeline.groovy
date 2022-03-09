@@ -5,8 +5,8 @@ def call(body) {
     def pipelineParams= [
             objparameterizedCron:
                 """
-                */2 * * * * %GREETING=Hola;PLANET=plutaoooo
-                */4 * * * * %PLANET=Marterrr
+                */2 * * * * %INSTANCE=instancia1;REGIAO=saopaulo
+                */4 * * * * %INSTANCE=instancia2;REGIAO=saopaulo
                 """,
             credentialIdAws: "Aasdadasd"
     ]
@@ -19,8 +19,9 @@ def call(body) {
         agent any
 
         parameters{
-            string(name: 'PLANET', defaultValue: 'Earth', description: 'Which planet are we on?')
-            string(name: 'GREETING', defaultValue: 'Hello', description: 'How shall we greet?')
+            string(name: 'INSTANCE', defaultValue: 'defaut-instance', description: 'Which planet are we on?')
+            string(name: 'REGIAO', defaultValue: 'defaut-regiao', description: 'How shall we greet?')
+            
         }
         triggers {
             parameterizedCron(pipelineParams.objparameterizedCron)
@@ -30,20 +31,12 @@ def call(body) {
             disableConcurrentBuilds()
         }
         stages {
-
-            stage('credentialIn') {
-                steps{
-                    sh "echo ${pipelineParams.credentialIdAws}"
-                    //sh " echo ${pipelineParams.objparameterizedCron}"
-                    echo "${params.GREETING} ${params.PLANET}"
-                    script { currentBuild.description = "${params.GREETING} ${params.PLANET}" }
-                   
-                    //awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
-                }
-            }
-
             stage('reboot') {
                 steps{
+                    sh "echo ${pipelineParams.credentialIdAws}"                    
+                    echo "${params.INSTANCE} ${params.REGIAO}"                    
+                    script { currentBuild.description = "${params.INSTANCE} ${params.REGIAO}" }
+ 
                     awsCliReboot()
                 }
             }
