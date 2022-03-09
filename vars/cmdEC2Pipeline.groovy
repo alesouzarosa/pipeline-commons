@@ -38,7 +38,7 @@ def call(body) {
                     echo "${params.GREETING} ${params.PLANET}"
                     script { currentBuild.description = "${params.GREETING} ${params.PLANET}" }
                    
-                    awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
+                    //awsCliConfig(pipelineParams.credentialIdAws, pipelineParams.awsRegion)
                 }
             }
 
